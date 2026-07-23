@@ -1,0 +1,13 @@
+project: default
+source:
+  repoURL: https://github.com/anhtvd812/devops-assignment
+  path: example-app-gitops/apps/overlays/dev
+  targetRevision: main
+destination:
+  server: https://kubernetes.default.svc
+  namespace: example-app-dev
+syncPolicy:
+  automated:
+    prune: false
+    selfHeal: false
+    enabled: true
