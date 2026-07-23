@@ -24,6 +24,7 @@ jobs:
           docker build -t ducanh812/example-app .
           # In a real workflow, you would log in to your registry first:
           echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker tag ducanh812/example-app:latest ducanh812/example-app:${{ github.sha }}
           docker push ducanh812/example-app:${{ github.sha }}
           echo "New image tag is: ${{ github.sha }}"
 
