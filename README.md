@@ -4,7 +4,7 @@ Tài liệu này trình bày giải pháp cho bài toán triển khai ứng dụ
 
 ### Sơ đồ Kiến trúc Tham khảo
 
-Đây là sơ đồ trực quan về luồng kiến trúc được đề xuất, minh họa luồng đi từ code của developer, qua CI/CD, đến GitOps repo và cuối cùng là các môi trường Kubernetes được quản lý bởi ArgoCD.
+Đây là sơ đồ tham khảo về luồng kiến trúc được đề xuất, minh họa luồng đi từ code của developer, qua CI/CD, đến GitOps repo và cuối cùng là các môi trường Kubernetes được quản lý bởi ArgoCD.
 
 ![Sơ đồ kiến trúc tổng thể](./images/overall-architecture-ref.png)
 
