@@ -8,7 +8,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Sao chép file template HTML vào thư mục html bên trong image
-COPY src/ /usr/share/nginx/html/
+COPY index.html.template /usr/share/nginx/html/
 
 # Sao chép và cấp quyền thực thi cho script khởi động
 COPY entrypoint.sh /entrypoint.sh
