@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BK-Crush FE</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #282c34; color: white; }
+        .container { text-align: center; }
+        h1 { font-size: 3rem; }
+        #env-badge {
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: inline-block;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BK-Crush Frontend</h1>
+        <p>Môi trường hiện tại:</p>
+        <div id="env-badge" style="background-color: __ENV_COLOR__">__ENVIRONMENT__</div>
+    </div>
+</body>
+</html>
