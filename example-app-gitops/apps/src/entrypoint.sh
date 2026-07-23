@@ -23,7 +23,7 @@ case "$CURRENT_ENV" in
 esac
 
 # Tìm và thay thế các placeholder trong file template và ghi kết quả ra file index.html
-sed -e "s|__ENVIRONMENT__|${CURRENT_ENV}|g" -e "s|__ENV_COLOR__|${COLOR}|g" /usr/share/nginx/templates/index.html.template > /usr/share/nginx/html/index.html
+sed -e "s|__ENVIRONMENT__|${CURRENT_ENV}|g" -e "s|__ENV_COLOR__|${COLOR}|g" /usr/share/nginx/html/index.html.template > /usr/share/nginx/html/index.html
 
 echo "Starting Nginx..."
 # Khởi động Nginx ở chế độ foreground
