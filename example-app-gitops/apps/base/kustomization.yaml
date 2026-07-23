@@ -6,4 +6,4 @@ resources:
 images:
 - name: ducanh812/example-app
   newName: ducanh812/example-app
-  newTag: d340d9bdff5373331487bd810b5400f0611c4ef9
+  newTag: 5906b48bd49aa8d14d4437fe2bcc4dc33512ef2c
