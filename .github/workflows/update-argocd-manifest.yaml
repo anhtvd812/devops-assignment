@@ -1,0 +1,49 @@
+name: Update Argo CD Manifest
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          # This token is required to push changes back to the repository.
+          # GITHUB_TOKEN is automatically created by Actions.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Simulate Image Build & Push (Placeholder)
+        run: |
+          # This step simulates building a Docker image from the source code
+          # and pushing it to a container registry.
+          cd example-app-gitops/apps/src
+          docker build -t ducanh812/example-app .
+          # In a real workflow, you would log in to your registry first:
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ducanh812/example-app:${{ github.sha }}
+          echo "New image tag is: ${{ github.sha }}"
+
+      - name: Update Kubernetes Manifest with New Image Tag
+        run: |
+          # Use Kustomize to update the image tag in the 'base' kustomization file.
+          # This change will then propagate to all overlays (dev, staging, prod).
+          cd example-app-gitops/apps/base
+          kustomize edit set image ducanh812/example-app=ducanh812/example-app:${{ github.sha }}
+
+      - name: Commit and Push Manifest Changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add only the specific file that was changed
+          git add example-app-gitops/apps/base/kustomization.yaml
+          
+          # Commit only if there are actual changes to prevent empty commits
+          git diff-index --quiet HEAD || git commit -m "Update image to ${{ github.sha }} for Argo CD [skip ci]"
+          
+          # Push the changes back to the same branch that triggered the workflow
+          git push
