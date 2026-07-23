@@ -21,7 +21,7 @@ jobs:
           # This step simulates building a Docker image from the source code
           # and pushing it to a container registry.
           cd example-app-gitops/apps/src
-          docker build -t ducanh812/example-app .
+          docker build -t ducanh812/example-app:${{ github.sha }} .
           # In a real workflow, you would log in to your registry first:
           echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker push ducanh812/example-app:${{ github.sha }}
