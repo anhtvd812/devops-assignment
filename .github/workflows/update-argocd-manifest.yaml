@@ -23,7 +23,7 @@ jobs:
           cd example-app-gitops/apps/src
           docker build -t ducanh812/example-app .
           # In a real workflow, you would log in to your registry first:
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+          echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker push ducanh812/example-app:${{ github.sha }}
           echo "New image tag is: ${{ github.sha }}"
 
